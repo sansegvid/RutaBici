@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RutaBici - Mis salidas</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <header class="encabezado">
+    <div class="encabezado-interno">
+      <a class="marca" href="index.html">
+        <img src="img/logo.svg" alt="Logo de RutaBici: una bicicleta" width="40" height="40">
+        <span>RutaBici</span>
+      </a>
+      <button id="btn-menu" class="btn-menu" type="button" aria-label="Abrir o cerrar el menú" aria-expanded="false" aria-controls="menu">&#9776;</button>
+      <nav id="menu" class="menu" aria-label="Menú principal">
+        <a href="index.html">Inicio</a>
+        <a href="planificar.html">Planificar ruta</a>
+        <a href="salidas.html" aria-current="page">Mis salidas</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="contenedor">
+    <h1>Mis salidas</h1>
+    <p>Registra tus salidas en bicicleta. Todo se guarda en tu navegador.</p>
+    <div id="mensaje" class="mensaje" hidden role="status"></div>
+
+    <div class="dos-columnas">
+      <section class="panel" aria-labelledby="t-form">
+        <h2 id="t-form">Registrar salida</h2>
+        <form id="form-salida" novalidate>
+          <div class="campo">
+            <label for="fecha">Fecha</label>
+            <input type="date" id="fecha" aria-describedby="error-fecha">
+            <small id="error-fecha" class="error"></small>
+          </div>
+          <div class="campo">
+            <label for="ruta">Ruta recorrida</label>
+            <input type="text" id="ruta" aria-describedby="error-ruta" placeholder="Ej: Alajuela - Atenas">
+            <small id="error-ruta" class="error"></small>
+          </div>
+          <div class="campo">
+            <label for="duracion">Duración (minutos)</label>
+            <input type="number" id="duracion" aria-describedby="error-duracion" step="1" inputmode="numeric">
+            <small id="error-duracion" class="error"></small>
+          </div>
+          <div class="campo">
+            <label for="distancia">Distancia (km)</label>
+            <input type="number" id="distancia" aria-describedby="error-distancia" step="0.1" inputmode="decimal">
+            <small id="error-distancia" class="error"></small>
+          </div>
+          <div class="campo">
+            <label for="velMax">Velocidad máxima (km/h)</label>
+            <input type="number" id="velMax" aria-describedby="error-velMax" step="0.1" inputmode="decimal">
+            <small id="error-velMax" class="error"></small>
+          </div>
+          <div class="campo">
+            <label for="desnivel">Desnivel acumulado (m)</label>
+            <input type="number" id="desnivel" aria-describedby="error-desnivel" step="1" inputmode="numeric">
+            <small id="error-desnivel" class="error"></small>
+          </div>
+          <div class="campo">
+            <label for="altitud">Altitud máxima (m)</label>
+            <input type="number" id="altitud" aria-describedby="error-altitud" step="1" inputmode="numeric">
+            <small id="error-altitud" class="error"></small>
+          </div>
+          <p class="media">Velocidad media: <strong id="vel-media">-</strong></p>
+          <div class="campo">
+            <label for="foto">Foto del día (opcional)</label>
+            <input type="file" id="foto" aria-describedby="error-foto" accept="image/*">
+            <small id="error-foto" class="error"></small>
+            <img id="vista-foto" class="foto" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="Vista previa de la foto elegida" hidden>
+          </div>
+          <div class="acciones">
+            <button type="submit" class="boton">Guardar salida</button>
+            <button type="button" id="btn-limpiar-form" class="boton secundario">Limpiar formulario</button>
+          </div>
+        </form>
+      </section>
+
+      <section aria-labelledby="t-hist">
+        <h2 id="t-hist">Historial</h2>
+        <div class="estadisticas tres">
+          <div class="estadistica"><strong id="res-racha">0 días</strong><span>Racha actual</span></div>
+          <div class="estadistica"><strong id="res-total">0</strong><span>Salidas</span></div>
+          <div class="estadistica"><strong id="res-km">0 km</strong><span>Distancia total</span></div>
+        </div>
+        <div class="acciones">
+          <button type="button" id="btn-limpiar-historial" class="boton peligro">Limpiar historial</button>
+        </div>
+        <div id="historial" class="tarjetas"></div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="pie">
+    <p>RutaBici · ISW-521 Programación en Ambiente Web I · UTN Sede Central</p>
+  </footer>
+
+  <script src="js/utils.js"></script>
+  <script src="js/salidas.js"></script>
+</body>
+</html>

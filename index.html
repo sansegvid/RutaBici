@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RutaBici - Inicio</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <header class="encabezado">
+    <div class="encabezado-interno">
+      <a class="marca" href="index.html">
+        <img src="img/logo.svg" alt="Logo de RutaBici: una bicicleta" width="40" height="40">
+        <span>RutaBici</span>
+      </a>
+      <button id="btn-menu" class="btn-menu" type="button" aria-label="Abrir o cerrar el menú" aria-expanded="false" aria-controls="menu">&#9776;</button>
+      <nav id="menu" class="menu" aria-label="Menú principal">
+        <a href="index.html" aria-current="page">Inicio</a>
+        <a href="planificar.html">Planificar ruta</a>
+        <a href="salidas.html">Mis salidas</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="contenedor">
+        <h1>Planifica, pedalea y recuerda cada salida</h1>
+        <p>Elige tu ruta, descubre cafeterías y restaurantes cerca de tu destino, y guarda el historial de tus salidas en un solo lugar.</p>
+        <a class="boton grande" href="planificar.html">Planificar mi ruta</a>
+      </div>
+    </section>
+
+    <section class="contenedor" aria-labelledby="t-problema">
+      <h2 id="t-problema">El problema</h2>
+      <p>Quien sale a pedalear usa una aplicación de mapas para la ruta, buscadores para encontrar dónde tomar café o comer, y otra aplicación (o ninguna) para su historial. Los mapas generales no destacan los locales útiles para ciclistas, y es común salir sin saber dónde comer cerca del destino.</p>
+      <h2>¿Para quién es?</h2>
+      <p>Para ciclistas recreativos, de ruta y urbanos que quieren planificar paradas con apoyo, llevar el control de sus kilómetros y mantener la constancia.</p>
+      <h2>¿Qué puedes hacer?</h2>
+      <div class="tarjetas">
+        <article class="tarjeta">
+          <h3>Planificar con apoyo</h3>
+          <p>Elige una ruta, filtra las cafeterías y restaurantes cerca del destino y agrega tus paradas.</p>
+          <a class="boton secundario" href="planificar.html">Ir a planificar</a>
+        </article>
+        <article class="tarjeta">
+          <h3>Registrar salidas</h3>
+          <p>Guarda tu distancia, velocidad, desnivel y una foto del día.</p>
+          <a class="boton secundario" href="salidas.html">Ir a mis salidas</a>
+        </article>
+      </div>
+    </section>
+
+    <section class="contenedor" aria-labelledby="t-stats">
+      <h2 id="t-stats">Tus estadísticas</h2>
+      <div class="estadisticas">
+        <div class="estadistica"><strong id="est-racha">0 días</strong><span>Racha actual</span></div>
+        <div class="estadistica"><strong id="est-total">0</strong><span>Salidas registradas</span></div>
+      </div>
+    </section>
+
+    <section class="contenedor" aria-labelledby="t-locales">
+      <h2 id="t-locales">Locales para ciclistas</h2>
+      <p class="dato">Catálogo de ejemplo para demostrar la carga del archivo JSON. Para consultar locales del mapa cerca de tu destino, entra a Planificar ruta.</p>
+      <div class="filtros" role="group" aria-label="Filtrar por tipo de local">
+        <button type="button" class="chip activo" aria-pressed="true" data-categoria="Todos">Todos</button>
+        <button type="button" class="chip" aria-pressed="false" data-categoria="Cafetería">Cafeterías</button>
+        <button type="button" class="chip" aria-pressed="false" data-categoria="Restaurante">Restaurantes</button>
+      </div>
+      <div id="lista" class="tarjetas"></div>
+    </section>
+  </main>
+
+  <footer class="pie">
+    <p>RutaBici · ISW-521 Programación en Ambiente Web I · UTN Sede Central</p>
+  </footer>
+
+  <script src="js/utils.js"></script>
+  <script src="js/index.js"></script>
+</body>
+</html>

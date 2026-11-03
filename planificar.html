@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RutaBici - Planificar ruta</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <header class="encabezado">
+    <div class="encabezado-interno">
+      <a class="marca" href="index.html">
+        <img src="img/logo.svg" alt="Logo de RutaBici: una bicicleta" width="40" height="40">
+        <span>RutaBici</span>
+      </a>
+      <button id="btn-menu" class="btn-menu" type="button" aria-label="Abrir o cerrar el menú" aria-expanded="false" aria-controls="menu">&#9776;</button>
+      <nav id="menu" class="menu" aria-label="Menú principal">
+        <a href="index.html">Inicio</a>
+        <a href="planificar.html" aria-current="page">Planificar ruta</a>
+        <a href="salidas.html">Mis salidas</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="contenedor">
+    <h1>Planificar ruta</h1>
+    <p>1. Indica tu punto de partida o usa tu ubicación actual y elige una ruta. 2. Elige el tipo de local y agrega tus paradas. 3. Abre la ruta en Google Maps.</p>
+    <div id="mensaje" class="mensaje" hidden role="status"></div>
+
+    <div class="dos-columnas">
+      <div>
+        <section class="panel" aria-labelledby="t-ruta">
+          <h2 id="t-ruta">Tu ruta</h2>
+          <div class="campo">
+            <label for="partida">Punto de partida</label>
+            <input type="text" id="partida" aria-describedby="ayuda-partida error-partida" placeholder="Ej: Condominio Botánica, Alajuela" maxlength="180">
+            <small id="ayuda-partida">Incluye el cantón o escribe latitud,longitud. Al terminar de editar se actualizan las recomendaciones.</small>
+            <button type="button" id="btn-ubicacion" class="boton secundario">Usar mi ubicación actual</button>
+            <button type="button" id="btn-actualizar" class="boton secundario">Actualizar rutas</button>
+            <select id="ubicaciones" aria-label="Confirma el punto de partida" hidden></select>
+            <small id="ubicacion-elegida" class="dato" role="status"></small>
+            <small id="error-partida" class="error"></small>
+          </div>
+          <div class="campo">
+            <label for="ruta">Ruta</label>
+            <select id="ruta" disabled><option value="">Primero indica el punto de partida</option></select>
+            <small class="dato">Destinos sugeridos por cercanía. Todas las rutas incluyen ida y regreso. La cercanía se ordena en línea recta; el trayecto se calcula al elegir la ruta.</small>
+          </div>
+          <div class="campo">
+            <label for="tipo">Tipo de local</label>
+            <select id="tipo">
+              <option value="Todos">Todos</option>
+              <option value="Cafetería">Cafetería</option>
+              <option value="Restaurante">Restaurante</option>
+            </select>
+          </div>
+        </section>
+
+        <section class="panel" aria-labelledby="t-resumen">
+          <h2 id="t-resumen">Resumen de mi ruta</h2>
+          <div id="resumen"></div>
+          <div class="acciones">
+            <button type="button" id="btn-mapa" class="boton" disabled>Abrir en Google Maps</button>
+            <button type="button" id="btn-limpiar" class="boton peligro">Limpiar paradas</button>
+          </div>
+          <p class="dato">Google Maps abre el circuito como referencia en modo auto, con preferencia para evitar autopistas. Revisa acceso y seguridad antes de salir.</p>
+          <p class="dato">Máximo 2 locales por circuito para conservar el destino y el regreso también en Google Maps móvil.</p>
+        </section>
+      </div>
+
+      <section aria-labelledby="t-locales">
+        <h2 id="t-locales">Locales cerca del destino</h2>
+        <p class="dato">Restaurantes y cafeterías a menos de 2 km del centro del destino, ordenados por cercanía. Las distancias son en línea recta.</p>
+        <p id="contador" class="dato" role="status"></p>
+        <button type="button" id="btn-reintentar" class="boton secundario" hidden>Volver a cargar locales</button>
+        <div id="lista" class="tarjetas"></div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="pie">
+    <p>Ubicaciones y locales: <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">© OpenStreetMap contributors</a>. Trayectos: BRouter. Requiere internet; los datos pueden estar incompletos.</p>
+    <p>RutaBici · ISW-521 Programación en Ambiente Web I · UTN Sede Central</p>
+  </footer>
+
+  <script src="js/utils.js"></script>
+  <script src="js/planificar.js"></script>
+</body>
+</html>
